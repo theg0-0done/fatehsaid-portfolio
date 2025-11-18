@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+html {
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+    min-width: fit-content;
+}
+
+section {
+    position: relative;
+    background-color: whitesmoke;
+    padding: 2rem;
+    width: 100vw;
+    text-align: center;
+}
+
+.title {
+    color: red;
+}
