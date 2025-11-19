@@ -15,7 +15,7 @@ export const styles = {
   },
 
   contact: {
-    link: "text-2xl text-gray-700 hover:underline hover:underline-offset-8",
+    link: "text-[1.2rem] md:text-2xl text-gray-700 hover:underline hover:underline-offset-8",
   },
 
   experiences: {
@@ -23,7 +23,7 @@ export const styles = {
       "flex justify-around lg:justify-between items-center gap-2",
     languageInfo: "flex flex-col justify-center items-start gap-1",
     language: "text-xl md:text-2xl lg:text-3xl font-semibold ",
-    container: "border-2 border-gray-300 rounded-4xl p-6 xl:py-12 flex flex-col xl:flex-row xl:w-[35%] xl:gap-8 flex-wrap justify-between items-start",
+    container: "border-2 border-gray-300 rounded-4xl px-2 py-4 md:p-8 xl:py-12 flex flex-col xl:flex-row w-fit md:w-[35%] xl:gap-8 flex-wrap justify-between items-start",
     title: "w-full text-3xl lg:text-4xl font-semibold",
   },
 };

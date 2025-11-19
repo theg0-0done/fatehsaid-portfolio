@@ -51,7 +51,7 @@ function Experiences() {
           Experiences
         </h2>
       </div>
-      <div className="flex justify-evenly items-stretch h-[60vh] xl:h-full w-full">
+      <div className="flex max-sm:justify-between sm:justify-evenly items-stretch h-[60vh] xl:h-full w-full whitespace-nowrap">
         <div className={styles.experiences.container}>
           <h2 className={styles.experiences.title}>
             Front-end

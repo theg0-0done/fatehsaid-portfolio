@@ -15,7 +15,7 @@ function Contact() {
       <div className="flex flex-col lg:flex-row justify-center lg:justify-around w-full md:w-[70%] pl-16 lg:pl-0 items-start gap-4 bg-white border-2 border-gray-300 px-8 py-12 rounded-4xl shadow-md ">
         <label className="flex justify-center items-center gap-4">
           <img
-            className="h-16 w-16"
+            className="h-10 w-auto lg:h-16"
             src="https://cdn-icons-png.flaticon.com/128/3178/3178158.png"
             alt="email icon"
           />
@@ -28,7 +28,7 @@ function Contact() {
         </label>
         <label className="flex justify-start items-center gap-4">
           <img
-            className="h-16 w-16"
+            className="h-10 w-auto lg:h-16"
             src="https://cdn-icons-png.flaticon.com/128/1384/1384014.png"
             alt="LinkedIn icon"
           />
@@ -67,7 +67,7 @@ function Contact() {
             Contact
           </a>
         </div>
-        <p className="text-xl text-gray-500 ">Copyright &copy; 2025 Said Fateh. All rights observed.</p>
+        <p className="lg:text-xl text-gray-500 whitespace-nowrap ">Copyright &copy; 2025 Said Fateh. All rights observed.</p>
       </div>
     </section>
   );
