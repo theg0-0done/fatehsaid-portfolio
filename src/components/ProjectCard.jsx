@@ -1,9 +1,11 @@
+import { styles } from "../assets/styles";
+
 function ProjectCard(props) {
   return (
-    <div className="group w-[90%] md:w-[80%] lg:w-[46%] xl:w-[40%] flex flex-col justify-center items-center text-center gap-6 border-2 pb-4 border-gray-300 bg-gray-200 hover:shadow-2xl hover:scale-101 rounded-3xl transition-all duration-300 ease-in-out ">
+    <div className="group w-[90%] md:w-[80%] lg:w-[46%] xl:w-[40%] flex flex-col justify-center items-center text-center gap-6 pb-4 bg-gray-200 hover:shadow-xl hover:scale-101 rounded-3xl transition-all duration-300 ease-in-out shadow-lg ">
       <div className="relative flex justify-center items-center">
         <img
-          className="border-2 border-white rounded-t-2xl w-full "
+          className="rounded-t-2xl w-full "
           src={props.image}
           alt={`${props.title} image`}
         />
@@ -18,13 +20,13 @@ function ProjectCard(props) {
       <div className="flex justify-evenly items-center w-full">
         <a
           href={props.github_repo}
-          className="hover:bg-gray-800 whitespace-nowrap flex justify-center items-center hover:text-white md:text-xl px-2 lg:px-8 py-2 lg:py-4 rounded-4xl cursor-pointer bg-transparent text-black border-2 border-gray-600 transition-all duration-300 ease-in-out "
+          className={styles.profile.resumeBtn}
         >
           <button>GitHub Repo</button>
         </a>
         <a
           href={props.link}
-          className="bg-gray-800 whitespace-nowrap flex justify-center items-center text-white md:text-xl px-2 lg:px-8 py-2 lg:py-4  rounded-4xl cursor-pointer hover:bg-transparent hover:text-black border-2 border-transparent hover:border-gray-600 transition-all duration-300 ease-in-out "
+          className={styles.profile.contactBtn}
         >
           <button>Live Demo</button>
         </a>

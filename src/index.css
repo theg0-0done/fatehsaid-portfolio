@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-* {
-    /* outline: red solid; */
-}
+/* * {
+    outline: red solid;
+} */
 
 html {
     font-family: "Poppins", sans-serif;
@@ -14,7 +14,6 @@ section {
     position: relative;
     background-color: whitesmoke;
     padding: 2rem;
-    width: 100vw;
     text-align: center;
 }
 

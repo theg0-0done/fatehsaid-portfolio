@@ -24,7 +24,7 @@ function Nav() {
           className={`${styles.profile.hamSpan} duration-600 ${open && "-rotate-225 -translate-y-2.5"}`}
         ></span>
       </div>
-      <div className="hidden lg:flex gap-8 text-[1.7rem] ">
+      <div className="hidden lg:flex gap-8 text-[1.5rem] ">
         <a href="#about" className={styles.profile.navLink}>
           About
         </a>

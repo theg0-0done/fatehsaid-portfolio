@@ -28,12 +28,12 @@ function Profile() {
         <h1 className="text-6xl md:text-7xl font-bold ">Said Fateh</h1>
         <h4 className="text-2xl md:text-3xl ">Full-Stack Developer</h4>
         <div className="flex mt-6 gap-6">
-          <button className={styles.resumeBtn}>
+          <button className={styles.profile.resumeBtn}>
             <a href="https://fatehsaid.netlify.app/assests/resume.pdf">
               Download CV
             </a>
           </button>
-          <button className={styles.contactBtn}>
+          <button className={styles.profile.contactBtn}>
             <a href="#contact">Make It Happen</a>
           </button>
         </div>
