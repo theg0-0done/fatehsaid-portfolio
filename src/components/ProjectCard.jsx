@@ -1,6 +1,6 @@
 function ProjectCard(props) {
   return (
-    <div className="group w-[90%] md:w-[80%] lg:w-[46%] xl:w-[40%] flex flex-col justify-center items-center text-center gap-6 border-2 px-2 pb-4 lg:px-0 border-gray-300 bg-gray-200 hover:shadow-2xl hover:scale-101 rounded-3xl transition-all duration-300 ease-in-out ">
+    <div className="group w-[90%] md:w-[80%] lg:w-[46%] xl:w-[40%] flex flex-col justify-center items-center text-center gap-6 border-2 pb-4 border-gray-300 bg-gray-200 hover:shadow-2xl hover:scale-101 rounded-3xl transition-all duration-300 ease-in-out ">
       <div className="relative flex justify-center items-center">
         <img
           className="border-2 border-white rounded-t-2xl w-full "

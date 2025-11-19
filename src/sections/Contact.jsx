@@ -4,7 +4,7 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="relative h-[80vh] text-center flex flex-col justify-between items-center"
+      className="relative h-[60vh] lg:h-[80vh] text-center flex flex-col justify-around items-center"
     >
       <div className="flex justify-center items-center flex-col mb-8">
         <p className="text-xl ">How To</p>
