@@ -3,7 +3,7 @@ export const styles = {
     navbar:
       "relative z-10 w-full h-[16vh] bg-gray-200 text-black flex justify-between lg:justify-around px-8 items-center transition-all duration-600 ease-in-out",
     navLink: "text-gray-700 hover:underline hover:underline-offset-8",
-    hamSpan: "bg-black transition-all ease-in-out h-1",
+    hamSpan: "bg-black rounded-[1rem] transition-all ease-in-out h-1",
     avatar:
       "w-[50vw] lg:w-[40vw] xl:w-[30vw] rounded-4xl border-gray-500 border-2 p-1 md:p-3 transition-all duration-100 ease-in-out",
     contactBtn:
