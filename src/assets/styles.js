@@ -22,9 +22,9 @@ export const styles = {
     languageElement:
       "flex justify-around lg:justify-between items-center gap-2",
     languageInfo: "flex flex-col justify-center items-start gap-1",
-    language: "text-xl md:text-2xl lg:text-3xl font-semibold ",
+    language: "text-xl lg:text-3xl font-semibold ",
     container:
-      "border-1 border-gray-200 rounded-4xl px-2 py-4 md:p-8 xl:py-12 flex flex-col xl:flex-row w-fit md:w-[35%] xl:gap-8 flex-wrap justify-between items-start shadow-lg",
+      "border-1 border-gray-200 rounded-4xl px-2 py-4 md:p-8 xl:py-12 flex flex-wrap flex-col xl:flex-row w-fit md:w-[35%] gap-2 xl:gap-8 justify-between items-start shadow-lg",
     title: "w-full text-3xl lg:text-4xl font-semibold",
   },
 };

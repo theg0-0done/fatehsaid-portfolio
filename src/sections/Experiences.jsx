@@ -10,13 +10,13 @@ function Experiences() {
       <img
         src={experience.icon}
         alt={`${experience.name} icon`}
-        className="h-8 w-8 md:h-16 md:w-16 "
+        className="h-6 w-6 lg:h-16 lg:w-16 "
       />
       <div className={styles.experiences.languageInfo}>
         <h4 className={styles.experiences.language}>
           {experience.name}
         </h4>
-        <p className="md:text-xl opacity-90 ">{experience.level}</p>
+        <p className="md:text-[1rem] opacity-90 ">{experience.level}</p>
       </div>
     </div>
   ));
@@ -29,7 +29,7 @@ function Experiences() {
       <img
         src={experience.icon}
         alt={`${experience.name} icon`}
-        className="h-8 w-8 md:h-16 md:w-16 "
+        className="h-6 w-6 lg:h-16 lg:w-16 "
       />
       <div className={styles.experiences.languageInfo}>
         <h4 className={styles.experiences.language}>
@@ -51,7 +51,7 @@ function Experiences() {
           Experiences
         </h2>
       </div>
-      <div className="flex max-sm:justify-between sm:justify-evenly items-stretch h-[60vh] xl:h-full w-full whitespace-nowrap">
+      <div className="flex max-sm:justify-between sm:justify-evenly items-stretch h-[70vh] xl:h-full w-full whitespace-nowrap">
         <div className={styles.experiences.container}>
           <h2 className={styles.experiences.title}>
             Front-end

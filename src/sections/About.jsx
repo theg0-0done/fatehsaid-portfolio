@@ -19,7 +19,7 @@ function About() {
         <div className="flex flex-col gap-2 lg:justify-evenly items-center lg:w-[40%]">
           <h4 className="text-xl">My Name Is</h4>
           <h2 className="text-4xl font-semibold">Said Fateh</h2>
-          <p className="lg:w-full text-xl md:text-2xl ">
+          <p className="w-[96%] lg:w-full text-[1rem] md:text-2xl ">
             I’m a 20-year-old Computer Science second-year student in university
             from Morocco.
             <br /><br /> I'm passionate about web-development, software engineering,

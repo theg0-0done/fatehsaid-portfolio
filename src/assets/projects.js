@@ -1,7 +1,7 @@
 import fitpath from "../assets/fitpath.png"
 import commerce50 from "../assets/commerce50.png"
 import designagency from "../assets/designagency.png"
-import movieapp from "../assets/movieapp.png"
+import cenimatv from "../assets/cinematv-project.png"
 
 export const projects = [
   {
@@ -32,11 +32,11 @@ export const projects = [
   },
   {
     id: 4,
-    title: "MovieApp",
+    title: "CenimaTv",
     description:
       "An app to browse and search for movies with ratings and reviews.",
-    link: "https://moviiesapp.netlify.app/",
-    image_path: movieapp,
-    github_repo: "https://github.com/theg0-0done/movie-app",
+    link: "https://cenimatv.netlify.app/",
+    image_path: cenimatv,
+    github_repo: "https://github.com/theg0-0done/cinematm",
   },
 ];

@@ -15,7 +15,7 @@ function ProjectCard(props) {
       </div>
       <div className="flex flex-col justify-center items-center gap-1">
         <h3 className="text-3xl font-semibold ">{props.title}</h3>
-        <p className="text-xl w-[90%] lg:hidden ">{props.description}</p>
+        <p className="text-[1rem] w-[90%] lg:hidden ">{props.description}</p>
       </div>
       <div className="flex justify-evenly items-center w-full">
         <a
