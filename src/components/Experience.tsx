@@ -57,14 +57,14 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 const barVariants = {
   hidden: { width: 0 },
   visible: (level: number) => ({
     width: `${level}%`,
-    transition: { duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.3 },
+    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] as const, delay: 0.3 },
   }),
 };
 
