@@ -1,23 +1,24 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-/* * {
-    outline: red solid;
-} */
-
-html {
-    font-family: "Poppins", sans-serif;
-    scroll-behavior: smooth;
-    min-width: fit-content;
+@theme {
+  --font-boldonse: "Boldonse", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
 }
 
-section {
-    position: relative;
-    background-color: whitesmoke;
-    padding: 2rem;
-    text-align: center;
-    width: 100vw;
+/* index.css or global.css */
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-.title {
-    color: red;
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:  gray;
 }
