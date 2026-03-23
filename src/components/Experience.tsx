@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from './LanguageContext';
 
 const skillColumns = [
   {
-    title: "Front-End",
+    titleKey: "experience.frontend",
     accent: "text-sky-400",
     borderAccent: "border-sky-500/20",
     dotColor: "bg-sky-400",
@@ -17,7 +18,7 @@ const skillColumns = [
     ],
   },
   {
-    title: "Back-End",
+    titleKey: "experience.backend",
     accent: "text-violet-400",
     borderAccent: "border-violet-500/20",
     dotColor: "bg-violet-400",
@@ -31,7 +32,7 @@ const skillColumns = [
     ],
   },
   {
-    title: "Mobile Apps",
+    titleKey: "experience.mobile",
     accent: "text-emerald-400",
     borderAccent: "border-emerald-500/20",
     dotColor: "bg-emerald-400",
@@ -69,6 +70,8 @@ const barVariants = {
 };
 
 const Experience: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="w-full min-h-screen bg-[#08080C] flex flex-col items-center justify-center px-8 py-24 md:py-32">
       <div className="max-w-7xl w-full">
@@ -82,10 +85,10 @@ const Experience: React.FC = () => {
           className="mb-20 md:mb-28"
         >
           <h2 className="font-boldonse text-5xl md:text-7xl lg:text-8xl text-white tracking-tight mb-6">
-            Experience.
+            {t('experience.title')}
           </h2>
           <p className="font-montserrat text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed">
-            A full-stack skill set built across years of shipping real products — from pixel-perfect UIs to scalable backends and cross-platform apps.
+            {t('experience.description')}
           </p>
         </motion.div>
 
@@ -99,14 +102,14 @@ const Experience: React.FC = () => {
         >
           {skillColumns.map((column) => (
             <motion.div
-              key={column.title}
+              key={column.titleKey}
               variants={cardVariants}
               className={`bg-white/[0.03] border border-white/8 rounded-3xl p-8 md:p-10 backdrop-blur-sm hover:bg-white/[0.06] transition-colors duration-500 ${column.borderAccent}`}
             >
               {/* Column header */}
               <div className="flex items-center gap-3 mb-10">
                 <div className={`w-2 h-2 rounded-full ${column.dotColor}`} />
-                <h3 className={`font-boldonse text-xl ${column.accent}`}>{column.title}</h3>
+                <h3 className={`font-boldonse text-xl ${column.accent}`}>{t(column.titleKey)}</h3>
               </div>
 
               {/* Skills list */}

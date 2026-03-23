@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import mapData from '../assets/points.json';
+import { useLanguage } from './LanguageContext';
 
 interface Point {
   x: number;
@@ -12,6 +13,7 @@ interface Point {
 
 const Hero: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -40,14 +42,12 @@ const Hero: React.FC = () => {
 
     const initParticles = () => {
       particles = [];
-      // Adjust scale to fit the map nicely
-      // The map width is 3578, we scale it down to fit in viewport with some padding.
       const paddingX = width > 768 ? 100 : 20; 
       const paddingY = 100;
       
       const scaleX = (width - paddingX * 2) / mapData.width;
       const scaleY = (height - paddingY * 2) / mapData.height;
-      const scale = Math.min(scaleX, scaleY) * 0.9; 
+      const scale = Math.min(scaleX, scaleY) * (width > 1024 ? 1.3 : 1.8); 
 
       const offsetX = (width - mapData.width * scale) / 2;
       const offsetY = (height - mapData.height * scale) / 2;
@@ -75,6 +75,7 @@ const Hero: React.FC = () => {
     };
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (window.innerWidth <= 1024) return;
       const rect = canvas.getBoundingClientRect();
       mouse.x = e.clientX - rect.left;
       mouse.y = e.clientY - rect.top;
@@ -88,9 +89,8 @@ const Hero: React.FC = () => {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Parallax easing
       if (mouse.x !== -1000) {
-        targetParallaxX = (mouse.x - width / 2) * -0.02; // subtle movement
+        targetParallaxX = (mouse.x - width / 2) * -0.02;
         targetParallaxY = (mouse.y - height / 2) * -0.02;
       } else {
         targetParallaxX = 0;
@@ -103,7 +103,6 @@ const Hero: React.FC = () => {
       ctx.save();
       ctx.translate(parallaxX, parallaxY);
 
-      // For performance, we use one big path to draw all dots.
       ctx.beginPath();
       ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
 
@@ -112,7 +111,6 @@ const Hero: React.FC = () => {
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
-        // Adjusted mouse relative to parallax
         const dx = (mouse.x - parallaxX) - p.baseX;
         const dy = (mouse.y - parallaxY) - p.baseY;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -120,29 +118,23 @@ const Hero: React.FC = () => {
         let targetX = p.baseX;
         let targetY = p.baseY;
 
-        // Apply repulsion
         if (dist < mouse.rad) {
           const force = (mouse.rad - dist) / mouse.rad;
           const angle = Math.atan2(dy, dx);
-          // Push away from cursor
           targetX -= Math.cos(angle) * force * mouse.force;
           targetY -= Math.sin(angle) * force * mouse.force;
         }
 
-        // Spring easing towards target
         p.vx += (targetX - p.x) * 0.15;
         p.vy += (targetY - p.y) * 0.15;
 
-        // Dampening (friction)
         p.vx *= 0.8;
         p.vy *= 0.8;
 
         p.x += p.vx;
         p.y += p.vy;
 
-        // Using rect instead of arc is slightly faster and visually identically tiny
         ctx.moveTo(p.x, p.y);
-        // ctx.arc(p.x, p.y, dotRadius, 0, Math.PI * 2);
         ctx.rect(p.x - dotRadius, p.y - dotRadius, dotRadius * 2, dotRadius * 2);
       }
       ctx.fill();
@@ -151,13 +143,13 @@ const Hero: React.FC = () => {
       animationFrameId = requestAnimationFrame(render);
     };
 
-    handleResize(); // Set initial size and points setup
+    handleResize();
 
     window.addEventListener('resize', handleResize);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseleave', handleMouseLeave);
 
-    render(); // Start loop
+    render();
 
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -169,7 +161,7 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative w-full h-screen bg-[#05060A] overflow-hidden flex items-center justify-start font-sans">
-      {/* Canvas Layer - Subtly drop shadow on the canvas for glow */}
+      {/* Canvas Layer */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-auto"
@@ -179,8 +171,8 @@ const Hero: React.FC = () => {
       {/* Interactive Overlay Content Layer */}
       <div className="relative z-10 px-4 mx-auto pointer-events-none">
         <h1 className="font-boldonse text-5xl md:text-8xl text-white mb-6 tracking-tight">
-          Hi, It's <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400 font-semibold">SAID</span><br/>
-          A <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400 font-semibold">Full-stuck Developer</span>
+          {t('hero.greeting')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400 font-semibold">{t('hero.name')}</span><br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400 font-semibold">{t('hero.role')}</span>
         </h1>
       </div>
     </section>

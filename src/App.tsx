@@ -7,6 +7,7 @@ import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import FloatingNav, { navTabs } from "./components/FloatingNav";
+import { LanguageProvider } from "./components/LanguageContext";
 
 const sectionComponents = [
   Hero,
@@ -16,7 +17,7 @@ const sectionComponents = [
   Contact
 ];
 
-function App() {
+function AppContent() {
   const [targetIndex, setTargetIndex] = useState(() => {
     const hash = window.location.hash.replace('#', '');
     const idx = navTabs.findIndex(t => t.id === hash);
@@ -112,7 +113,15 @@ function App() {
         />
       </div>
     </div>
-  )
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
+  );
 }
 
 export default App;
