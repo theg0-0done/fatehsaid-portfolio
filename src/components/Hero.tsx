@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import mapData from '../assets/points.json';
-import { useLanguage } from './LanguageContext';
+import React, { useEffect, useRef } from "react";
+import mapData from "../assets/points.json";
+import { useLanguage } from "./LanguageContext";
 
 interface Point {
   x: number;
@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let width = window.innerWidth;
@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
       x: -1000,
       y: -1000,
       rad: 120, // repulsion radius
-      force: 25 // repulsion strength
+      force: 25, // repulsion strength
     };
 
     let targetParallaxX = 0;
@@ -42,12 +42,12 @@ const Hero: React.FC = () => {
 
     const initParticles = () => {
       particles = [];
-      const paddingX = width > 768 ? 100 : 20; 
+      const paddingX = width > 768 ? 100 : 20;
       const paddingY = 100;
-      
+
       const scaleX = (width - paddingX * 2) / mapData.width;
       const scaleY = (height - paddingY * 2) / mapData.height;
-      const scale = Math.min(scaleX, scaleY) * (width > 1024 ? 1.3 : 1.8); 
+      const scale = Math.min(scaleX, scaleY) * (width > 1024 ? 1.3 : 1.8);
 
       const offsetX = (width - mapData.width * scale) / 2;
       const offsetY = (height - mapData.height * scale) / 2;
@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
           baseX: bx,
           baseY: by,
           vx: 0,
-          vy: 0
+          vy: 0,
         });
       }
     };
@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
         targetParallaxX = 0;
         targetParallaxY = 0;
       }
-      
+
       parallaxX += (targetParallaxX - parallaxX) * 0.1;
       parallaxY += (targetParallaxY - parallaxY) * 0.1;
 
@@ -104,15 +104,15 @@ const Hero: React.FC = () => {
       ctx.translate(parallaxX, parallaxY);
 
       ctx.beginPath();
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+      ctx.fillStyle = "rgba(255, 255, 255, 0.75)";
 
       const dotRadius = 1.3;
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
-        const dx = (mouse.x - parallaxX) - p.baseX;
-        const dy = (mouse.y - parallaxY) - p.baseY;
+        const dx = mouse.x - parallaxX - p.baseX;
+        const dy = mouse.y - parallaxY - p.baseY;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         let targetX = p.baseX;
@@ -135,7 +135,12 @@ const Hero: React.FC = () => {
         p.y += p.vy;
 
         ctx.moveTo(p.x, p.y);
-        ctx.rect(p.x - dotRadius, p.y - dotRadius, dotRadius * 2, dotRadius * 2);
+        ctx.rect(
+          p.x - dotRadius,
+          p.y - dotRadius,
+          dotRadius * 2,
+          dotRadius * 2,
+        );
       }
       ctx.fill();
       ctx.restore();
@@ -145,16 +150,16 @@ const Hero: React.FC = () => {
 
     handleResize();
 
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseleave", handleMouseLeave);
 
     render();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -165,14 +170,20 @@ const Hero: React.FC = () => {
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-auto"
-        style={{ filter: 'drop-shadow(0 0 2px rgba(255,255,255,0.4))' }}
+        style={{ filter: "drop-shadow(0 0 2px rgba(255,255,255,0.4))" }}
       />
-      
+
       {/* Interactive Overlay Content Layer */}
       <div className="relative z-10 px-4 mx-auto pointer-events-none">
         <h1 className="font-boldonse text-5xl md:text-8xl text-white mb-6 tracking-tight">
-          {t('hero.greeting')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400 font-semibold">{t('hero.name')}</span><br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400 font-semibold">{t('hero.role')}</span>
+          {t("hero.greeting")}{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400 font-semibold">
+            {t("hero.name")}
+          </span>
+          <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400 font-semibold">
+            {t("hero.role")}
+          </span>
         </h1>
       </div>
     </section>

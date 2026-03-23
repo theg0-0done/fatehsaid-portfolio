@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import { useLanguage } from "./LanguageContext";
 
 const Contact: React.FC = () => {
   const { t } = useLanguage();
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -17,7 +20,32 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Submitted", formData);
+
+    if (!formRef.current) return;
+    
+    setStatus("sending");
+
+    // TODO: Replace these placeholders with your actual EmailJS credentials
+    const serviceID = "service_hx0j6fs";
+    const templateID = "template_f0n1bqa";
+    const publicKey = "BPS3oCGZ3pbQi2m6R";
+
+    emailjs
+      .sendForm(serviceID, templateID, formRef.current, {
+        publicKey: publicKey,
+      })
+      .then(
+        () => {
+          setStatus("success");
+          setFormData({ name: "", email: "", message: "" });
+          setTimeout(() => setStatus("idle"), 5000);
+        },
+        (error) => {
+          console.error("FAILED...", error.text);
+          setStatus("error");
+          setTimeout(() => setStatus("idle"), 5000);
+        }
+      );
   };
 
   return (
@@ -77,6 +105,7 @@ const Contact: React.FC = () => {
           </h3>
 
           <form
+            ref={formRef}
             onSubmit={handleSubmit}
             className="w-full max-w-xl flex flex-col flex-1"
           >
@@ -116,12 +145,23 @@ const Contact: React.FC = () => {
               />
             </div>
 
-            <div className="flex justify-end w-full">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full mt-8 gap-4">
+              {/* Status Message */}
+              <div className="text-sm font-montserrat">
+                {status === "success" && (
+                  <span className="text-green-500">Message sent successfully! I'll get back to you soon.</span>
+                )}
+                {status === "error" && (
+                  <span className="text-red-500">Oops! Failed to send. Please try again later.</span>
+                )}
+              </div>
+
               <button
                 type="submit"
-                className="mt-8 px-10 py-5 bg-white text-black font-montserrat font-semibold text-sm rounded-full hover:bg-gray-200 transition-colors duration-300 self-start w-auto"
+                disabled={status === "sending"}
+                className="px-10 py-5 bg-white text-black font-montserrat font-semibold text-sm rounded-full hover:bg-gray-200 transition-colors duration-300 disabled:opacity-70 disabled:cursor-not-allowed self-start w-auto"
               >
-                {t('contact.send')}
+                {status === "sending" ? "Sending..." : t('contact.send')}
               </button>
             </div>
           </form>
