@@ -51,16 +51,16 @@ const projects = [
 const Projects = () => {
 
   const { t } = useLanguage();
- 
+
   return (
     <div className="w-full min-h-screen pt-32 pb-48 px-8 md:px-16 lg:px-24 xl:px-32 text-white bg-[#020202]">
       <div className="max-w-7xl mx-auto w-full">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="mb-24 md:mb-32"
+          className="mb-32 md:mb-48"
         >
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8">
             {t('projects.title')}
@@ -69,79 +69,89 @@ const Projects = () => {
             {t('projects.description')}
           </p>
         </motion.div>
-        
-        <div className="relative w-full flex flex-col gap-12 md:gap-24 pb-24">
-          {projects.map((project) => (
-            <motion.div 
+
+        {/* On large screens: sticky stacking parallax. On small screens: normal scroll with gap. */}
+        <div className="relative w-full flex flex-col gap-12 md:gap-24 lg:block pb-24">
+          {projects.map((project, index) => (
+            <div
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full"
+              className="lg:sticky pb-12 md:pb-16 lg:pb-32"
+              style={{ 
+                zIndex: index + 1,
+                top: `calc(120px + ${index * 48}px)` 
+              }}
             >
-              <div 
-                className={`w-full overflow-hidden rounded-3xl border border-white/5 shadow-[0_30px_60px_rgba(0,0,0,0.8)] bg-gradient-to-br ${project.color}`}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="w-full"
               >
-                <div className="flex flex-col-reverse lg:flex-row min-h-[500px] lg:min-h-[600px]">
-                  
-                  <div className="w-full lg:w-1/2 p-4 md:p-14 lg:p-20 flex flex-col justify-between backdrop-blur-xl bg-black/40">
-                    <div>
-                      <div className="flex justify-between items-center mb-8">
-                        <span className="text-gray-400 font-montserrat tracking-widest text-xs md:text-sm uppercase">
-                          {t('projects.featured')}
-                        </span>
-                        <span className="text-gray-500 font-montserrat text-sm">
-                          {project.year}
-                        </span>
-                      </div>
-                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-                        {project.title}
-                      </h3>
-                      <p className="text-gray-400 font-montserrat text-base md:text-lg leading-relaxed mb-8">
-                        {t(project.descriptionKey)}
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <div className="flex flex-wrap gap-3 mb-10">
-                        {project.tech.map((tech, i) => (
-                          <span key={i} className="px-4 py-2 rounded-full border border-white/10 text-xs text-gray-300 font-montserrat bg-white/5">
-                            {tech}
+                <div
+                  className={`w-full overflow-hidden rounded-3xl border border-white/5 shadow-[0_30px_60px_rgba(0,0,0,0.8)] bg-gradient-to-br ${project.color}`}
+                >
+                  {/* Alternate layout: odd cards (0,2) → description left / image right; even cards (1,3) → image left / description right */}
+                  <div className={`flex flex-col-reverse ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} min-h-[500px] lg:min-h-[600px]`}>
+
+                    <div className="w-full lg:w-1/2 p-4 md:p-14 lg:p-20 flex flex-col justify-between backdrop-blur-xl bg-black/40">
+                      <div>
+                        <div className="flex justify-between items-center mb-8">
+                          <span className="text-gray-400 font-montserrat tracking-widest text-xs md:text-sm uppercase">
+                            {t('projects.featured')}
                           </span>
-                        ))}
-                      </div>
-                      
-                      <a 
-                        href={project.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-4 text-white hover:text-gray-300 transition-colors group w-fit"
-                      >
-                        <span className="font-montserrat text-sm uppercase tracking-widest">{t('projects.openSite')}</span>
-                        <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
-                          <svg className="w-4 h-4 transform -rotate-45 group-hover:rotate-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                          </svg>
+                          <span className="text-gray-500 font-montserrat text-sm">
+                            {project.year}
+                          </span>
                         </div>
-                      </a>
+                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                          {project.title}
+                        </h3>
+                        <p className="text-gray-400 font-montserrat text-base md:text-lg leading-relaxed mb-8">
+                          {t(project.descriptionKey)}
+                        </p>
+                      </div>
+
+                      <div>
+                        <div className="flex flex-wrap gap-3 mb-10">
+                          {project.tech.map((tech, i) => (
+                            <span key={i} className="px-4 py-2 rounded-full border border-white/10 text-xs text-gray-300 font-montserrat bg-white/5">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-4 text-white hover:text-gray-300 transition-colors group w-fit"
+                        >
+                          <span className="font-montserrat text-sm uppercase tracking-widest">{t('projects.openSite')}</span>
+                          <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
+                            <svg className="w-4 h-4 transform -rotate-45 group-hover:rotate-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                          </div>
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="w-full lg:w-1/2 aspect-square lg:aspect-auto lg:min-h-full relative overflow-hidden group">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-5 transition-opacity duration-700 pointer-events-none`} />
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                       <img 
-                         src={project.image} 
-                         alt={project.title} 
-                         className="w-full h-full object-cover rounded-none transition-transform duration-700 ease-out group-hover:scale-105" 
-                       />
+
+                    <div className="w-full lg:w-1/2 aspect-square lg:aspect-auto lg:min-h-full relative overflow-hidden group">
+                      <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-5 transition-opacity duration-700 pointer-events-none`} />
+                      <div className="absolute inset-0 flex flex-col items-center justify-center">
+                         <img
+                           src={project.image}
+                           alt={project.title}
+                           className="w-full h-full object-cover rounded-none transition-transform duration-700 ease-out group-hover:scale-105"
+                         />
+                      </div>
                     </div>
+
                   </div>
-                  
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           ))}
         </div>
       </div>
