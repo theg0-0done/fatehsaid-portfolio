@@ -4,12 +4,13 @@ import carRentalImg from '../assets/carrental.png';
 import ausbildungSucheImg from '../assets/ausbildungsuche.png';
 import fitTrackImg from '../assets/fittrack.png';
 import seqqayaImg from '../assets/seqqaya-restaurant.png';
+import cinemaImg from '../assets/cinematm.png';
 
 const projects = [
   {
     id: 1,
     title: "Car Rental",
-    year: "2024",
+    year: "2026",
     descriptionKey: "projects.carrental.description",
     tech: ["React", "Node.js", "Supabase", "Express"],
     color: "from-[#2A2300] to-[#050505]",
@@ -19,7 +20,7 @@ const projects = [
   {
     id: 2,
     title: "Ausbildung Suche",
-    year: "2024",
+    year: "2026",
     descriptionKey: "projects.ausbildung.description",
     tech: ["React", "TypeScript", "REST API", "CSS", "Supabase"],
     color: "from-[#1A0B2E] to-[#05020A]",
@@ -28,8 +29,18 @@ const projects = [
   },
   {
     id: 3,
+    title: "CinemaTM",
+    year: "2026",
+    descriptionKey: "projects.cinematm.description",
+    tech: ["React", "TypeScript", "Tailwind CSS", "TMDB API", "Framer Motion"],
+    color: "from-[#081F3D] to-[#050505]",
+    url: "https://cinematm.fatehsaid.com/",
+    image: cinemaImg
+  },
+  {
+    id: 4,
     title: "FitTrack",
-    year: "2024",
+    year: "2026",
     descriptionKey: "projects.fittrack.description",
     tech: ["React", "HTML", "CSS", "REST API"],
     color: "from-[#1C170A] to-[#000000]",
@@ -37,9 +48,9 @@ const projects = [
     image: fitTrackImg
   },
   {
-    id: 4,
+    id: 5,
     title: "Seqqaya Restaurant",
-    year: "2024",
+    year: "2026",
     descriptionKey: "projects.seqqaya.description",
     tech: ["React", "HTML", "CSS", "REST API"],
     color: "from-amber-900 to-[#110800]",
@@ -75,10 +86,10 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="lg:sticky pb-12 md:pb-16 lg:pb-32"
+              className="lg:sticky pb-8 md:pb-16 lg:pb-24"
               style={{ 
                 zIndex: index + 1,
-                top: `calc(120px + ${index * 48}px)` 
+                top: `calc(64px + ${index * 16}px)` 
               }}
             >
               <motion.div
@@ -92,9 +103,9 @@ const Projects = () => {
                   className={`w-full overflow-hidden rounded-3xl border border-white/5 shadow-[0_30px_60px_rgba(0,0,0,0.8)] bg-gradient-to-br ${project.color}`}
                 >
                   {/* Alternate layout: odd cards (0,2) → description left / image right; even cards (1,3) → image left / description right */}
-                  <div className={`flex flex-col-reverse ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} min-h-[500px] lg:min-h-[600px]`}>
+                  <div className={`flex flex-col-reverse ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} min-h-[480px] lg:h-[520px]`}>
 
-                    <div className="w-full lg:w-1/2 p-4 md:p-14 lg:p-20 flex flex-col justify-between backdrop-blur-xl bg-black/40">
+                    <div className="w-full lg:w-1/2 p-6 md:p-10 lg:p-12 flex flex-col justify-between backdrop-blur-xl bg-black/40">
                       <div>
                         <div className="flex justify-between items-center mb-8">
                           <span className="text-gray-400 font-montserrat tracking-widest text-xs md:text-sm uppercase">
@@ -137,7 +148,7 @@ const Projects = () => {
                       </div>
                     </div>
 
-                    <div className="w-full lg:w-1/2 aspect-square lg:aspect-auto lg:min-h-full relative overflow-hidden group">
+                    <div className="w-full lg:w-1/2 aspect-square lg:aspect-auto lg:h-full relative overflow-hidden group">
                       <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-5 transition-opacity duration-700 pointer-events-none`} />
                       <div className="absolute inset-0 flex flex-col items-center justify-center">
                          <img

@@ -46,6 +46,7 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.ausbildung.description': 'A specialized platform designed to help students find vocational training opportunities in Germany. Features intuitive search, detailed company profiles, and a seamless application interface.',
     'projects.fittrack.description': 'A comprehensive fitness tracking application featuring exercise libraries, TDEE calculators, and meal nutrition analysis. Designed to help users build healthier habits with an engaging dark-themed UI.',
     'projects.seqqaya.description': 'An elegant restaurant presentation website. Features a responsive menu layout, online reservation system integration, and a beautiful gallery showcasing the culinary experience.',
+    'projects.cinematm.description': 'A premium movie and TV show streaming web platform. Features a modern cinematic UI, auto-playing hero carousels, responsive episode selectors, dynamic TMDB API integration, and an immersive watch experience with advanced content filtering.',
 
     // Contact
     'contact.heading': 'Reach',
@@ -97,6 +98,7 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.ausbildung.description': 'Eine spezialisierte Plattform, die Schülern hilft, Ausbildungsmöglichkeiten in Deutschland zu finden. Mit intuitiver Suche, detaillierten Firmenprofilen und einer nahtlosen Bewerbungsoberfläche.',
     'projects.fittrack.description': 'Eine umfassende Fitness-Tracking-Anwendung mit Übungsbibliotheken, TDEE-Rechnern und Mahlzeiten-Nährwertanalyse. Entwickelt, um Nutzern mit einer ansprechenden dunklen Benutzeroberfläche zu helfen, gesündere Gewohnheiten aufzubauen.',
     'projects.seqqaya.description': 'Eine elegante Restaurant-Präsentationswebsite. Beinhaltet ein responsives Menü-Layout, die Integration eines Online-Reservierungssystems und eine wunderschöne Galerie, die das kulinarische Erlebnis präsentiert.',
+    'projects.cinematm.description': 'Eine erstklassige Web-Streaming-Plattform für Filme und Serien. Bietet eine moderne Benutzeroberfläche im Kino-Stil, automatisch abspielende Karussells, eine responsive Episodenauswahl, eine dynamische TMDB-API-Integration und ein fesselndes Seherlebnis.',
 
     // Contact
     'contact.heading': 'Schreib',
@@ -148,6 +150,7 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.ausbildung.description': "Une plateforme spécialisée conçue pour aider les étudiants à trouver des opportunités de formation professionnelle en Allemagne. Avec une recherche intuitive, des profils d'entreprises détaillés et une interface de candidature fluide.",
     'projects.fittrack.description': "Une application complète de suivi fitness avec des bibliothèques d'exercices, des calculateurs TDEE et une analyse nutritionnelle des repas. Conçue pour aider les utilisateurs à adopter des habitudes plus saines avec une interface sombre et engageante.",
     'projects.seqqaya.description': "Un élégant site de présentation de restaurant. Propose une mise en page de menu responsive, l'intégration d'un système de réservation en ligne et une magnifique galerie mettant en valeur l'expérience culinaire.",
+    'projects.cinematm.description': "Une plateforme web premium de streaming de films et séries. Propose une interface cinéma moderne, des carrousels d'accueil à lecture automatique, des sélecteurs d'épisodes responsives, une intégration dynamique de l'API TMDB et une expérience de visionnage immersive.",
 
     // Contact
     'contact.heading': 'Contactez',
