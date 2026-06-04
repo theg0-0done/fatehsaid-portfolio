@@ -52,7 +52,7 @@ const projects = [
     title: "Seqqaya Restaurant",
     year: "2026",
     descriptionKey: "projects.seqqaya.description",
-    tech: ["React", "HTML", "CSS", "REST API"],
+    tech: ["React", "HTML", "CSS", "n8n"],
     color: "from-amber-900 to-[#110800]",
     url: "https://seqqaya.fatehsaid.com/",
     image: seqqayaImg
