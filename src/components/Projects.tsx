@@ -2,13 +2,23 @@ import { motion } from 'framer-motion';
 import { useLanguage } from './LanguageContext';
 import carRentalImg from '../assets/carrental.png';
 import ausbildungSucheImg from '../assets/ausbildungsuche.png';
-import fitTrackImg from '../assets/fittrack.png';
+import datamgtImg from '../assets/datamgt.png';
 import seqqayaImg from '../assets/seqqaya-restaurant.png';
 import cinemaImg from '../assets/cinematm.png';
 
 const projects = [
   {
     id: 1,
+    title: "Data Management",
+    year: "2026",
+    descriptionKey: "projects.datamgt.description",
+    tech: ["React", "TypeScript", "Vite", "Supabase", "Tailwind CSS", "Framer Motion"],
+    color: "from-[#1A0005] to-[#050505]",
+    url: "https://datamgt.ma/en/",
+    image: datamgtImg
+  },
+  {
+    id: 2,
     title: "Car Rental",
     year: "2026",
     descriptionKey: "projects.carrental.description",
@@ -18,7 +28,7 @@ const projects = [
     image: carRentalImg
   },
   {
-    id: 2,
+    id: 3,
     title: "Ausbildung Suche",
     year: "2026",
     descriptionKey: "projects.ausbildung.description",
@@ -28,7 +38,7 @@ const projects = [
     image: ausbildungSucheImg
   },
   {
-    id: 3,
+    id: 4,
     title: "CinemaTM",
     year: "2026",
     descriptionKey: "projects.cinematm.description",
@@ -36,16 +46,6 @@ const projects = [
     color: "from-[#081F3D] to-[#050505]",
     url: "https://cinematm.fatehsaid.com/",
     image: cinemaImg
-  },
-  {
-    id: 4,
-    title: "FitTrack",
-    year: "2026",
-    descriptionKey: "projects.fittrack.description",
-    tech: ["React", "HTML", "CSS", "REST API"],
-    color: "from-[#1C170A] to-[#000000]",
-    url: "https://fittrack.fatehsaid.com/",
-    image: fitTrackImg
   },
   {
     id: 5,
