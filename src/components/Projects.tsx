@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from './LanguageContext';
-import carRentalImg from '../assets/carrental.png';
-import ausbildungSucheImg from '../assets/ausbildungsuche.png';
-import datamgtImg from '../assets/datamgt.png';
-import seqqayaImg from '../assets/seqqaya-restaurant.png';
-import cinemaImg from '../assets/cinematm.png';
+import carRentalImg from '../assets/carrental.webp';
+import brothersshopImg from '../assets/brothersshop.webp';
+import datamgtImg from '../assets/datamgt.webp';
+import seqqayaImg from '../assets/seqqaya-restaurant.webp';
+import cinemaImg from '../assets/cinematm.webp';
 
 const projects = [
   {
@@ -29,13 +29,13 @@ const projects = [
   },
   {
     id: 3,
-    title: "Ausbildung Suche",
+    title: "Brothersshop Store",
     year: "2026",
-    descriptionKey: "projects.ausbildung.description",
-    tech: ["React", "TypeScript", "REST API", "CSS", "Supabase"],
-    color: "from-[#1A0B2E] to-[#05020A]",
-    url: "https://ausbildung-suche-app.fatehsaid.com/home",
-    image: ausbildungSucheImg
+    descriptionKey: "projects.brothersshop.description",
+    tech: ["Shopify", "Liquid", "Vanilla JS"],
+    color: "from-white to-black",
+    url: "https://brothersshop.fatehsaid.com/",
+    image: brothersshopImg
   },
   {
     id: 4,
